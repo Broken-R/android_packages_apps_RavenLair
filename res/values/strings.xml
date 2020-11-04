@@ -153,5 +153,8 @@
     <string name="lockscreen_media_art_title">Media Art</string>
     <string name="lockscreen_media_art_summary">Toggle visibility of media art</string>
 
+    <string name="qs_running_services_title">Running Services Icon</string>
+    <string name="qs_running_services_summary">Enable the running services icon in the footer</string>
+
 </resources>
 
