@@ -43,6 +43,11 @@
         android:summary="@string/display_cutout_force_fullscreen_summary"
         android:fragment="com.raven.lair.fragments.DisplayCutoutForceFullscreenSettings"
         settings:controller="com.raven.lair.fragments.DisplayCutoutForceFullscreenPreferenceController" />
+     <Preference
+         android:key="animations_category"
+         android:title="@string/animation_settings_title"
+         android:summary="@string/animation_settings_summary"
+         android:fragment="com.raven.lair.fragments.AnimationSettings" />
 
      <ListPreference
             android:key="pref_scrollingcache"
@@ -51,5 +56,5 @@
             android:summary="@string/pref_scrollingcache_summary"
             android:entries="@array/entries_scrollingcache"
             android:entryValues="@array/values_scrollingcache" />
-
+  
 </PreferenceScreen>
