@@ -38,10 +38,23 @@ import java.util.List;
 public class FingerprintPrefs extends SettingsPreferenceFragment
         implements Preference.OnPreferenceChangeListener, Indexable {
 
+    private static final String FOD_ANIMATION = "fod_anim";
+    private Preference mFODAnimation;
+
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         addPreferencesFromResource(R.xml.fingerprint_prefs);
+        Context mContext = getContext();
+        final PreferenceScreen prefScreen = getPreferenceScreen();
+
+        boolean showFODAnimationPicker = mContext.getResources().getBoolean(R.bool.has_fod_animation_picker);
+        mFODAnimation = (Preference) findPreference(FOD_ANIMATION);
+        if ((mFODIconPickerCategory != null && mFODAnimation != null &&
+             !getResources().getBoolean(com.android.internal.R.bool.config_needCustomFODView)) ||
+                (mFODIconPickerCategory != null && mFODAnimation != null && !showFODAnimationPicker)) {
+            mFODIconPickerCategory.removePreference(mFODAnimation);
+        }
     }
 
     @Override
