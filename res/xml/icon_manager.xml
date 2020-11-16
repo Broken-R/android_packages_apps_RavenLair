@@ -37,6 +37,12 @@
             android:defaultValue="true" />
 
     <com.corvus.support.preferences.SystemSettingSwitchPreference
+            android:key="statusbar_privacy_indicators"
+            android:title="@string/statusbar_privacy_indicators_title"
+            android:summary="@string/statusbar_privacy_indicators_summary"
+            android:defaultValue="true" />
+
+    <com.corvus.support.preferences.SystemSettingSwitchPreference
         android:key="data_disabled_icon"
         android:title="@string/data_disabled_icon_title"
         android:summary="@string/data_disabled_icon_summary"
