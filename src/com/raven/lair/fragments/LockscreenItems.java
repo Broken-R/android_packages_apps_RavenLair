@@ -39,10 +39,33 @@ import java.util.List;
 public class LockscreenItems extends SettingsPreferenceFragment
         implements Preference.OnPreferenceChangeListener, Indexable {
 
+    private static final String FOD_ANIMATION = "fod_anim";
+    private static final String FOD_ICON_PICKER_CATEGORY = "fod_icon_picker";
+    private Preference mFODAnimation;
+    private PreferenceCategory mFODIconPickerCategory;
+
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         addPreferencesFromResource(R.xml.lockscreen_items);
+
+        final PreferenceScreen prefScreen = getPreferenceScreen();
+        Context mContext = getContext();
+
+        mFODIconPickerCategory = (PreferenceCategory) findPreference(FOD_ICON_PICKER_CATEGORY);
+        if (mFODIconPickerCategory != null
+                && !getResources().getBoolean(com.android.internal.R.bool.config_supportsInDisplayFingerprint)) {
+            prefScreen.removePreference(mFODIconPickerCategory);
+        }
+
+        boolean showFODAnimationPicker = mContext.getResources().getBoolean(R.bool.has_fod_animation_picker);
+        mFODAnimation = (Preference) findPreference(FOD_ANIMATION);
+        if ((mFODIconPickerCategory != null && mFODAnimation != null &&
+             !getResources().getBoolean(com.android.internal.R.bool.config_supportsInDisplayFingerprint)) ||
+                (mFODIconPickerCategory != null && mFODAnimation != null && !showFODAnimationPicker)) {
+            mFODIconPickerCategory.removePreference(mFODAnimation);
+        }
+
     }
 
     @Override
