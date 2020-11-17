@@ -55,4 +55,7 @@
     <!-- Whether to display power menu category -->
     <bool name="has_powermenu">true</bool>
 
+    <!-- FOD recognizing animation -->
+    <bool name="has_fod_animation_picker">false</bool>
+
 </resources>

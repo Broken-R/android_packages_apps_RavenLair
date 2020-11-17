@@ -26,6 +26,7 @@ import androidx.preference.*;
 
 import com.android.internal.logging.nano.MetricsProto;
 
+import com.android.internal.util.custom.FodUtils;
 import com.android.settings.R;
 import com.android.settings.search.BaseSearchIndexProvider;
 import com.android.settingslib.search.Indexable;
@@ -38,7 +39,10 @@ import java.util.List;
 public class FingerprintPrefs extends SettingsPreferenceFragment
         implements Preference.OnPreferenceChangeListener, Indexable {
 
+    private static final String FOD_ICON_PICKER_CATEGORY = "fod_icon_picker";
     private static final String FOD_ANIMATION = "fod_anim";
+
+    private PreferenceCategory mFODIconPickerCategory;
     private Preference mFODAnimation;
 
     @Override
@@ -48,10 +52,16 @@ public class FingerprintPrefs extends SettingsPreferenceFragment
         Context mContext = getContext();
         final PreferenceScreen prefScreen = getPreferenceScreen();
 
+        mFODIconPickerCategory = (PreferenceCategory) findPreference(FOD_ICON_PICKER_CATEGORY);
+        if (mFODIconPickerCategory != null
+                && !getResources().getBoolean(com.android.internal.R.bool.config_supportsInDisplayFingerprint)) {
+            prefScreen.removePreference(mFODIconPickerCategory);
+        }
+
         boolean showFODAnimationPicker = mContext.getResources().getBoolean(R.bool.has_fod_animation_picker);
         mFODAnimation = (Preference) findPreference(FOD_ANIMATION);
         if ((mFODIconPickerCategory != null && mFODAnimation != null &&
-             !getResources().getBoolean(com.android.internal.R.bool.config_needCustomFODView)) ||
+             !getResources().getBoolean(com.android.internal.R.bool.config_supportsInDisplayFingerprint)) ||
                 (mFODIconPickerCategory != null && mFODAnimation != null && !showFODAnimationPicker)) {
             mFODIconPickerCategory.removePreference(mFODAnimation);
         }
