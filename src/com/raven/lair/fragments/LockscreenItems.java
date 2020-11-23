@@ -54,14 +54,14 @@ public class LockscreenItems extends SettingsPreferenceFragment
 
         mFODIconPickerCategory = (PreferenceCategory) findPreference(FOD_ICON_PICKER_CATEGORY);
         if (mFODIconPickerCategory != null
-                && !getResources().getBoolean(com.android.internal.R.bool.config_supportsInDisplayFingerprint)) {
+                && !getResources().getBoolean(com.android.internal.R.bool.config_needCustomFODView)) {
             prefScreen.removePreference(mFODIconPickerCategory);
         }
 
         boolean showFODAnimationPicker = mContext.getResources().getBoolean(R.bool.has_fod_animation_picker);
         mFODAnimation = (Preference) findPreference(FOD_ANIMATION);
         if ((mFODIconPickerCategory != null && mFODAnimation != null &&
-             !getResources().getBoolean(com.android.internal.R.bool.config_supportsInDisplayFingerprint)) ||
+             !getResources().getBoolean(com.android.internal.R.bool.config_needCustomFODView)) ||
                 (mFODIconPickerCategory != null && mFODAnimation != null && !showFODAnimationPicker)) {
             mFODIconPickerCategory.removePreference(mFODAnimation);
         }
