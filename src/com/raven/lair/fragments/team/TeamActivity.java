@@ -72,8 +72,6 @@ public class TeamActivity extends Activity {
                 R.drawable.merser);
         setTeamMember("ᴀꜱʜᴡᴀᴛᴛʜᴀᴍᴀ", getString(R.string.maintainer_title), "sai4041412", "saisamy95",
                 R.drawable.sai);
-        setTeamMember("Aditya", getString(R.string.maintainer_title), "meetaditya", "meetaditya",
-                R.drawable.aditya);
         setTeamMember("PKM774", getString(R.string.maintainer_title), "pkm774", "pkm774",
                 R.drawable.pkm);
         setTeamMember("Introdructor", getString(R.string.maintainer_title), "Introdructor", "Introdructor",
