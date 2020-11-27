@@ -39,6 +39,13 @@
         android:key="fod_icon_picker"
         android:title="@string/fod_icon_picker_category_title">
 
+        <!-- FOD icon picker -->
+        <Preference
+            android:key="fod_icon_picker_category"
+            android:title="@string/fod_icon_picker_title"
+            android:summary="@string/fod_icon_picker_summary"
+            android:fragment="com.corvus.settings.FODIconPickerFragment" />
+
         <!-- FOD recognizing animation -->
         <com.corvus.support.preferences.SystemSettingSwitchPreference
             android:key="fod_recognizing_animation"
