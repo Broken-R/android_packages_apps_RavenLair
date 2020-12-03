@@ -34,7 +34,7 @@ import android.provider.Settings;
 import android.util.Log;
 
 import com.android.internal.logging.nano.MetricsProto.MetricsEvent;
-import com.android.internal.util.corvus.Utils
+import com.android.internal.util.corvus.Utils;
 import com.android.settings.R;
 import com.android.settings.SettingsPreferenceFragment;
 import com.android.settings.search.BaseSearchIndexProvider;

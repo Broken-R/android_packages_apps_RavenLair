@@ -381,6 +381,7 @@
     <string name="volume_panel_tiled_val">co.potatoproject.plugin.volume.tiled</string>
 
     <!-- Omni Jaws -->
+    <string name="category_interface_title">Interface</string>
     <string name="weather_title">Weather settings</string>
     <string name="weather_summary">OmniJaws weather configs</string>
     <string name="weather_config_title">Weather service</string>
