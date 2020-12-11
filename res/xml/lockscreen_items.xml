@@ -45,17 +45,17 @@
         android:summary="@string/lockscreen_battery_info_summary"
         android:defaultValue="true" />
 
+    <com.android.settings.corvus.preferences.SystemSettingListPreference 
+        android:key="lockscreen_charging_animation_style"
+        android:title="@string/lockscreen_charging_animation_title"
+        android:entries="@array/lockscreen_charging_animation_entries"
+        android:entryValues="@array/lockscreen_charging_animation_values"
+        android:defaultValue="1" />
     <com.corvus.support.preferences.SystemSettingSwitchPreference
-	android:key="fingerprint_success_vib"
-        android:title="@string/fprint_sucess_vib_title"
-        android:summary="@string/fprint_sucess_vib_summary"
-        android:defaultValue="true" />
-
-    <com.corvus.support.preferences.SystemSettingSwitchPreference
-	android:key="fingerprint_error_vib"
-        android:title="@string/fprint_error_vib_title"
-        android:summary="@string/fprint_error_vib_summary"
-        android:defaultValue="true" />
+        android:key="charging_animation"
+        android:title="@string/charging_animation_title"
+        android:summary="@string/charging_animation_summary"
+        android:defaultValue="true" /
     </PreferenceCategory>
 
     <PreferenceCategory
@@ -81,21 +81,7 @@
         android:title="@string/lockscreen_visualizer_enable"
         android:summary="@string/lockscreen_visualizer_enable_summary"
         android:defaultValue="false" />
-     
-     <com.android.settings.corvus.preferences.SystemSettingListPreference 
-        android:key="lockscreen_charging_animation_style"
-        android:title="@string/lockscreen_charging_animation_title"
-        android:entries="@array/lockscreen_charging_animation_entries"
-        android:entryValues="@array/lockscreen_charging_animation_values"
-        android:defaultValue="1" />
-
-    <com.corvus.support.preferences.SystemSettingSwitchPreference
-        android:key="charging_animation"
-        android:title="@string/charging_animation_title"
-        android:summary="@string/charging_animation_summary"
-        android:defaultValue="true" />
-   
-     
+    
     <com.corvus.support.preferences.SystemSettingSeekBarPreference
         android:key="lockscreen_media_blur"
         android:title="@string/lockscreen_media_blur_title"
