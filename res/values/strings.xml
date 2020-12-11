@@ -416,5 +416,9 @@
     <string name="theming_settings_dashboard_icons_default_accent2">Accent background</string>
     <string name="theming_settings_dashboard_icons_plain">Plain</string>
     <string name="theming_settings_dashboard_icons_plain_accent">Plain accent</string>
+
+    <!-- Power menu on lockscreen -->
+    <string name="lockscreen_power_menu_disabled_title">Disable power menu on lock screen</string>
+    <string name="lockscreen_power_menu_disabled_summary">This will only disable the power menu on secure lock screens</string>
 </resources>
 
