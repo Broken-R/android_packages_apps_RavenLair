@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2017-2019 The Dirty Unicorns Project
+ * Copyright (C) 2020 CorvusROM
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -31,17 +31,29 @@ import com.android.settings.search.BaseSearchIndexProvider;
 import com.android.settingslib.search.Indexable;
 import com.android.settings.SettingsPreferenceFragment;
 import com.android.settings.Utils;
+import com.android.internal.util.custom.FodUtils;
 
 import java.util.ArrayList;
 import java.util.List;
 
-public class FingerprintPrefs extends SettingsPreferenceFragment
-        implements Preference.OnPreferenceChangeListener, Indexable {
+public class Lockscreen extends SettingsPreferenceFragment implements
+        Preference.OnPreferenceChangeListener {
+
+    private static final String FOD_ICON_PICKER_CATEGORY = "fod_icon_picker";
+
+    private PreferenceCategory mFODIconPickerCategory;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         addPreferencesFromResource(R.xml.fingerprint_prefs);
+        Context mContext = getContext();
+        final PreferenceScreen prefScreen = getPreferenceScreen();
+
+        mFODIconPickerCategory = findPreference(FOD_ICON_PICKER_CATEGORY);
+        if (mFODIconPickerCategory != null && !FodUtils.hasFodSupport(getContext())) {
+            prefScreen.removePreference(mFODIconPickerCategory);
+        }
     }
 
     @Override

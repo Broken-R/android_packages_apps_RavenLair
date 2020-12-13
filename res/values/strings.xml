@@ -58,6 +58,7 @@
     <!-- Lockscreen -->
     <string name="fingerprint_prefs_title">Fingerprint prefs</string>
     <string name="fingerprint_prefs_summary">Tweaks specific to the fingerprint scanner</string>
+    <string name="fingerprint_custs">Fingerprint Customizations</string>
     <string name="lockscreen_items_title">Lockscreen items</string>
     <string name="lockscreen_items_summary">Customize the lockscreen</string>
     <string name="switch_settings_title">Misc lockscreen settings</string>
@@ -414,5 +415,12 @@
     <string name="theming_settings_dashboard_icons_default_accent2">Accent background</string>
     <string name="theming_settings_dashboard_icons_plain">Plain</string>
     <string name="theming_settings_dashboard_icons_plain_accent">Plain accent</string>
+
+    <!-- FOD icon picker -->
+    <string name="fod_icon_picker_category_title">FOD Customizations</string>
+
+    <!-- FOD animations -->
+    <string name="fod_recog_animation">Fingerprint Animation</string>
+    <string name="fod_recog_animation_summary">Shows an animation while reading your finger</string>
 </resources>
 
