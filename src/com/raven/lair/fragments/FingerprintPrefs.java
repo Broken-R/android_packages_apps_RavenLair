@@ -36,7 +36,7 @@ import com.android.internal.util.custom.FodUtils;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Lockscreen extends SettingsPreferenceFragment implements
+public class FingerprintPrefs extends SettingsPreferenceFragment implements
         Preference.OnPreferenceChangeListener {
 
     private static final String FOD_ICON_PICKER_CATEGORY = "fod_icon_picker";
