@@ -47,9 +47,11 @@ public class NavigationOptions extends SettingsPreferenceFragment
         implements Preference.OnPreferenceChangeListener, Indexable {
 
     private static final String GESTURE_SYSTEM_NAVIGATION = "gesture_system_navigation";
+     private static final String PIXEL_NAV_ANIMATION = "pixel_nav_animation";
      private static final String NAVBAR_TUNER = "navbar_tuner";
 
     private Preference mGestureSystemNavigation;
+    private SystemSettingSwitchPreference mPixelNavAnimation;
      private Preference mNavbarTuner;
 
 
@@ -58,9 +60,10 @@ public class NavigationOptions extends SettingsPreferenceFragment
         super.onCreate(savedInstanceState);
         addPreferencesFromResource(R.xml.navigation_options);
 
-        final PreferenceScreen prefSet = getPreferenceScreen();
+        final PreferenceScreen prefScreen = getPreferenceScreen();
         
          mGestureSystemNavigation = (Preference) findPreference(GESTURE_SYSTEM_NAVIGATION);
+         mPixelNavAnimation = findPreference(PIXEL_NAV_ANIMATION);
          mNavbarTuner = (Preference) findPreference(NAVBAR_TUNER);
         if (CorvusUtils.isThemeEnabled("com.android.internal.systemui.navbar.threebutton")) {
             mGestureSystemNavigation.setSummary(getString(R.string.legacy_navigation_title));
@@ -68,6 +71,7 @@ public class NavigationOptions extends SettingsPreferenceFragment
             mGestureSystemNavigation.setSummary(getString(R.string.swipe_up_to_switch_apps_title));
         } else {
             mGestureSystemNavigation.setSummary(getString(R.string.edge_to_edge_navigation_title));
+         prefScreen.removePreference(mPixelNavAnimation);
          prefScreen.removePreference(mNavbarTuner);
         }
 
