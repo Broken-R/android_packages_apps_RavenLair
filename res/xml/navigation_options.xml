@@ -23,9 +23,18 @@
         android:title="@string/system_navigation_title"
         android:fragment="com.android.settings.gestures.SystemNavigationGestureSettings"
         settings:controller="com.android.settings.gestures.SystemNavigationPreferenceController" />
+     
+     <com.corvus.support.preferences.SecureSettingListPreference
+        android:key="navbar_layout_views"
+        android:title="@string/navbar_layout_title"
+        android:summary="%s"
+        android:entries="@array/navbar_layout_entries"
+        android:entryValues="@array/navbar_layout_values"
+        android:defaultValue="default" />
+ 
 
      <com.corvus.support.preferences.SecureSettingSwitchPreference
-            android:key="sysui_nav_bar_inverse"
+            android:key="navbar_inverse_layout"
             android:title="@string/navbar_invert_layout_title"
             android:defaultValue="false" />       
 

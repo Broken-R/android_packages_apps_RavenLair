@@ -49,10 +49,19 @@ public class NavigationOptions extends SettingsPreferenceFragment
     private static final String GESTURE_SYSTEM_NAVIGATION = "gesture_system_navigation";
      private static final String PIXEL_NAV_ANIMATION = "pixel_nav_animation";
 
+     private Preference mGestureSystemNavigation;
+     private SwitchPreference mPixelNavAnimation;
+
+
+      private static final String LAYOUT_SETTINGS = "navbar_layout_views";
+      private static final String NAVIGATION_BAR_INVERSE = "navbar_inverse_layout";
+     private static final String NAVBAR_TUNER = "navbar_tuner";
 
     private Preference mGestureSystemNavigation;
     private SystemSettingSwitchPreference mPixelNavAnimation;
- 
+    private Preference mLayoutSettings;
+    private SwitchPreference mSwapNavButtons;
+
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -64,6 +73,13 @@ public class NavigationOptions extends SettingsPreferenceFragment
          mGestureSystemNavigation = (Preference) findPreference(GESTURE_SYSTEM_NAVIGATION);
          mPixelNavAnimation = findPreference(PIXEL_NAV_ANIMATION);
 
+         mLayoutSettings = (Preference) findPreference(LAYOUT_SETTINGS);
+        mSwapNavButtons = (SwitchPreference) findPreference(NAVIGATION_BAR_INVERSE);
+
+        if (!CorvusUtils.isThemeEnabled("com.android.internal.systemui.navbar.threebutton")) {
+            prefScreen.removePreference(mLayoutSettings);
+        }
+
         if (CorvusUtils.isThemeEnabled("com.android.internal.systemui.navbar.threebutton")) {
             mGestureSystemNavigation.setSummary(getString(R.string.legacy_navigation_title));
         } else if (CorvusUtils.isThemeEnabled("com.android.internal.systemui.navbar.twobutton")) {
@@ -71,6 +87,7 @@ public class NavigationOptions extends SettingsPreferenceFragment
         } else {
             mGestureSystemNavigation.setSummary(getString(R.string.edge_to_edge_navigation_title));
          prefScreen.removePreference(mPixelNavAnimation);
+         prefScreen.removePreference(mSwapNavButtons);
 
         }
 
