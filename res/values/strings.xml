@@ -402,6 +402,7 @@
  
    <!-- Navbar options -->
     <string name="unsupported_gestures">Enable two button or three button navigation to use this feature</string>
+    <string name="navbar_visibility">Enable Navigation Bar</string>
     <string name="navbar_invert_layout_title">Invert layout</string>
     <string name="navbar_layout_title">Layout</string>
     <string name="navbar_layout_normal">Normal</string>

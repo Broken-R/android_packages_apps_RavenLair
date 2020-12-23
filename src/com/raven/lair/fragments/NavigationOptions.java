@@ -54,13 +54,18 @@ public class NavigationOptions extends SettingsPreferenceFragment
 
 
       private static final String LAYOUT_SETTINGS = "navbar_layout_views";
+      private static final String NAVBAR_VISIBILITY = "navbar_visibility";
       private static final String NAVIGATION_BAR_INVERSE = "navbar_inverse_layout";
      private static final String NAVBAR_TUNER = "navbar_tuner";
 
     private Preference mGestureSystemNavigation;
     private SystemSettingSwitchPreference mPixelNavAnimation;
     private Preference mLayoutSettings;
+    private SwitchPreference mNavbarVisibility;
     private SwitchPreference mSwapNavButtons;
+
+    private boolean mIsNavSwitchingMode = false;
+    private Handler mHandler;
 
 
     @Override
@@ -95,10 +100,44 @@ PixelNavAnimation.setSummary(getString(R.string.pixel_navbar_anim_summary));
             mSwapNavButtons.setEnabled(false);  
         }
 
+    mNavbarVisibility = (SwitchPreference) findPreference(NAVBAR_VISIBILITY);
+
+        boolean defaultToNavigationBar = EvolutionUtils.deviceSupportNavigationBar(getActivity());
+        boolean showing = Settings.System.getInt(getContentResolver(),
+                Settings.System.FORCE_SHOW_NAVBAR,
+                defaultToNavigationBar ? 1 : 0) != 0;
+        updateBarVisibleAndUpdatePrefs(showing);
+        mNavbarVisibility.setOnPreferenceChangeListener(this);
+
+        mHandler = new Handler();
+
     }
 
     public boolean onPreferenceChange(Preference preference, Object objValue) {
+        
+        if (preference.equals(mNavbarVisibility)) {
+            if (mIsNavSwitchingMode) {
+                return false;
+            }
+            mIsNavSwitchingMode = true;
+            boolean showing = ((Boolean)newValue);
+            Settings.System.putInt(getContentResolver(), Settings.System.FORCE_SHOW_NAVBAR,
+                    showing ? 1 : 0);
+            updateBarVisibleAndUpdatePrefs(showing);
+            mHandler.postDelayed(new Runnable() {
+                @Override
+                public void run() {
+                    mIsNavSwitchingMode = false;
+                }
+            }, 1500);
+            return true;
+        }        
+
         return false;
+    }
+
+    private void updateBarVisibleAndUpdatePrefs(boolean showing) {
+        mNavbarVisibility.setChecked(showing);
     }
 
     @Override
