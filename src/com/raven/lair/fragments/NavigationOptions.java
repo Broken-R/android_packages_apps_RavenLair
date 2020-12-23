@@ -31,11 +31,10 @@ import android.provider.Settings;
 import android.widget.Toast;
 import androidx.preference.PreferenceCategory;
 import androidx.preference.ListPreference;
-import androidx.preference.Preference;
+
 import androidx.preference.PreferenceScreen;
 import androidx.preference.SwitchPreference;
 import androidx.preference.*;
-import androidx.preference.Preference.OnPreferenceChangeListener;
 import com.android.settingslib.search.SearchIndexable;
 
 
@@ -57,12 +56,19 @@ import java.util.List;
 public class NavigationOptions extends SettingsPreferenceFragment
         implements Preference.OnPreferenceChangeListener {
 
+    private static final String PIXEL_NAV_ANIMATION = "pixel_nav_animation";
+
+    private SwitchPreference mPixelNavAnimation;
+
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         addPreferencesFromResource(R.xml.navigation_options);
 
-        final PreferenceScreen prefSet = getPreferenceScreen();
+        final PreferenceScreen prefScreen = getPreferenceScreen();
+
+                mPixelNavAnimation = (SwitchPreference) findPreference(PIXEL_NAV_ANIMATION);
+
 
     }
 
