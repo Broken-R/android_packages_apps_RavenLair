@@ -47,8 +47,10 @@ public class NavigationOptions extends SettingsPreferenceFragment
         implements Preference.OnPreferenceChangeListener, Indexable {
 
     private static final String GESTURE_SYSTEM_NAVIGATION = "gesture_system_navigation";
+     private static final String NAVBAR_TUNER = "navbar_tuner";
 
     private Preference mGestureSystemNavigation;
+     private Preference mNavbarTuner;
 
 
     @Override
@@ -59,12 +61,14 @@ public class NavigationOptions extends SettingsPreferenceFragment
         final PreferenceScreen prefSet = getPreferenceScreen();
         
          mGestureSystemNavigation = (Preference) findPreference(GESTURE_SYSTEM_NAVIGATION);
+         mNavbarTuner = (Preference) findPreference(NAVBAR_TUNER);
         if (CorvusUtils.isThemeEnabled("com.android.internal.systemui.navbar.threebutton")) {
             mGestureSystemNavigation.setSummary(getString(R.string.legacy_navigation_title));
         } else if (CorvusUtils.isThemeEnabled("com.android.internal.systemui.navbar.twobutton")) {
             mGestureSystemNavigation.setSummary(getString(R.string.swipe_up_to_switch_apps_title));
         } else {
             mGestureSystemNavigation.setSummary(getString(R.string.edge_to_edge_navigation_title));
+         prefScreen.removePreference(mNavbarTuner);
         }
 
     }
