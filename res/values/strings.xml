@@ -399,10 +399,10 @@
     <!-- Notification headers -->
     <string name="notification_headers_title">Notification Headers</string>
     <string name="notification_headers_summary">Show headers in the notification shade\nRequires a SystemUI restart</string>
-
-     <!-- Navbar tuner -->
-    <string name="navbar_tuner_title">Navbar Tuner</string>
-
+ 
+   <!-- Navbar options -->
+    <string name="navbar_invert_layout_title">Invert layout</string>
+     
     <!-- Navbar Animation -->
     <string name="pixel_navbar_anim_title">Pixel animation</string>
     <string name="pixel_navbar_anim_summary">Toggle home button animation</string>
