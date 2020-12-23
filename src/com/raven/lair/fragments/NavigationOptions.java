@@ -30,6 +30,7 @@ import androidx.preference.*;
 import androidx.preference.Preference.OnPreferenceChangeListener;
 
 import com.android.internal.logging.nano.MetricsProto;
+import com.android.internal.util.corvus.CorvusUtils;
 
 import com.android.settings.R;
 import com.android.settings.search.BaseSearchIndexProvider;
@@ -45,12 +46,26 @@ import java.util.List;
 public class NavigationOptions extends SettingsPreferenceFragment
         implements Preference.OnPreferenceChangeListener, Indexable {
 
+    private static final String GESTURE_SYSTEM_NAVIGATION = "gesture_system_navigation";
+
+    private Preference mGestureSystemNavigation;
+
+
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         addPreferencesFromResource(R.xml.navigation_options);
 
         final PreferenceScreen prefSet = getPreferenceScreen();
+        
+         mGestureSystemNavigation = (Preference) findPreference(GESTURE_SYSTEM_NAVIGATION);
+        if (CorvusUtils.isThemeEnabled("com.android.internal.systemui.navbar.threebutton")) {
+            mGestureSystemNavigation.setSummary(getString(R.string.legacy_navigation_title));
+        } else if (CorvusUtils.isThemeEnabled("com.android.internal.systemui.navbar.twobutton")) {
+            mGestureSystemNavigation.setSummary(getString(R.string.swipe_up_to_switch_apps_title));
+        } else {
+            mGestureSystemNavigation.setSummary(getString(R.string.edge_to_edge_navigation_title));
+        }
 
     }
 
