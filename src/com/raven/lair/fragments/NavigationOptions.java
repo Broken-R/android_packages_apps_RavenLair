@@ -30,7 +30,7 @@ import androidx.preference.*;
 import androidx.preference.Preference.OnPreferenceChangeListener;
 
 import com.android.internal.logging.nano.MetricsProto;
-import com.android.internal.util.corvus.CorvusUtils;
+import com.android.internal.util.corvus.Utils;
 
 import com.android.settings.R;
 import com.android.settings.search.BaseSearchIndexProvider;
@@ -82,11 +82,11 @@ public class NavigationOptions extends SettingsPreferenceFragment
         mSwapNavButtons = (SwitchPreference) findPreference(NAVIGATION_BAR_INVERSE);
 
         // On three button nav
-        if (CorvusUtils.isThemeEnabled("com.android.internal.systemui.navbar.threebutton")) {
+        if (Utils.isThemeEnabled("com.android.internal.systemui.navbar.threebutton")) {
             mGestureSystemNavigation.setSummary(getString(R.string.legacy_navigation_title));
 mPixelNavAnimation.setSummary(getString(R.string.pixel_navbar_anim_summary));
         // On two button nav
-        } else if (CorvusUtils.isThemeEnabled("com.android.internal.systemui.navbar.twobutton")) {
+        } else if (Utils.isThemeEnabled("com.android.internal.systemui.navbar.twobutton")) {
             mGestureSystemNavigation.setSummary(getString(R.string.swipe_up_to_switch_apps_title));
 PixelNavAnimation.setSummary(getString(R.string.pixel_navbar_anim_summary));
         // On gesture nav
@@ -102,7 +102,7 @@ PixelNavAnimation.setSummary(getString(R.string.pixel_navbar_anim_summary));
 
     mNavbarVisibility = (SwitchPreference) findPreference(NAVBAR_VISIBILITY);
 
-        boolean defaultToNavigationBar = EvolutionUtils.deviceSupportNavigationBar(getActivity());
+        boolean defaultToNavigationBar = Utils.deviceSupportNavigationBar(getActivity());
         boolean showing = Settings.System.getInt(getContentResolver(),
                 Settings.System.FORCE_SHOW_NAVBAR,
                 defaultToNavigationBar ? 1 : 0) != 0;
