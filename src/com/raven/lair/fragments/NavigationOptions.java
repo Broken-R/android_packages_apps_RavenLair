@@ -18,6 +18,8 @@ package com.raven.lair.fragments;
 
 import android.content.ComponentName;
 import android.content.ContentResolver;
+import android.app.Activity;
+import android.content.res.Resources;
 import android.content.Context;
 import android.content.Intent;
 import android.content.pm.PackageManager;
@@ -26,8 +28,16 @@ import android.os.Handler;
 import android.os.UserHandle;
 import android.provider.SearchIndexableResource;
 import android.provider.Settings;
+import android.widget.Toast;
+import androidx.preference.PreferenceCategory;
+import androidx.preference.ListPreference;
+import androidx.preference.Preference;
+import androidx.preference.PreferenceScreen;
+import androidx.preference.SwitchPreference;
 import androidx.preference.*;
 import androidx.preference.Preference.OnPreferenceChangeListener;
+import com.android.settingslib.search.SearchIndexable;
+
 
 import com.android.internal.logging.nano.MetricsProto;
 
@@ -35,15 +45,17 @@ import com.android.settings.R;
 import com.android.settings.search.BaseSearchIndexProvider;
 import com.android.settingslib.search.Indexable;
 import com.android.settings.SettingsPreferenceFragment;
-import com.android.settings.Utils;
+
 
 import com.corvus.support.preferences.SystemSettingSwitchPreference;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
+@SearchIndexable(forTarget = SearchIndexable.ALL & ~SearchIndexable.ARC)
 public class NavigationOptions extends SettingsPreferenceFragment
-        implements Preference.OnPreferenceChangeListener, Indexable {
+        implements Preference.OnPreferenceChangeListener {
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -73,22 +85,22 @@ public class NavigationOptions extends SettingsPreferenceFragment
         super.onPause();
     }
 
-    public static final SearchIndexProvider SEARCH_INDEX_DATA_PROVIDER =
+   public static final BaseSearchIndexProvider SEARCH_INDEX_DATA_PROVIDER =
             new BaseSearchIndexProvider() {
+
                 @Override
-                public List<SearchIndexableResource> getXmlResourcesToIndex(Context context,
-                        boolean enabled) {
-                    final ArrayList<SearchIndexableResource> result = new ArrayList<>();
+                public List<SearchIndexableResource> getXmlResourcesToIndex(
+                        Context context, boolean enabled) {
                     final SearchIndexableResource sir = new SearchIndexableResource(context);
                     sir.xmlResId = R.xml.navigation_options;
-                    result.add(sir);
-                    return result;
+                    return Arrays.asList(sir);
                 }
 
                 @Override
                 public List<String> getNonIndexableKeys(Context context) {
-                    final List<String> keys = super.getNonIndexableKeys(context);
-                    return keys;
-        }
-    };
+                    ArrayList<String> result = new ArrayList<String>();
+                    return result;
+                }
+            };
+
 }
