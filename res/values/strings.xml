@@ -406,6 +406,7 @@
     <string name="pixel_navbar_anim_summary">Toggle home button animation</string>
 
    <!-- Navbar layout options -->
+    <string name="navbar_visibility">Enable navigation bar</string>
     <string name="navbar_layout_title">Layout</string>
     <string name="navbar_layout_normal">Normal</string>
     <string name="navbar_layout_compact">Compact</string>
