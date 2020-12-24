@@ -57,8 +57,12 @@ public class NavigationOptions extends SettingsPreferenceFragment
         implements Preference.OnPreferenceChangeListener {
 
     private static final String PIXEL_NAV_ANIMATION = "pixel_nav_animation";
+    private static final String LAYOUT_SETTINGS = "navbar_layout_views";
+
 
     private SwitchPreference mPixelNavAnimation;
+    private Preference mLayoutSettings;
+
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -68,7 +72,11 @@ public class NavigationOptions extends SettingsPreferenceFragment
         final PreferenceScreen prefScreen = getPreferenceScreen();
 
                 mPixelNavAnimation = (SwitchPreference) findPreference(PIXEL_NAV_ANIMATION);
+                mLayoutSettings = (Preference) findPreference(LAYOUT_SETTINGS);
 
+        if (!Utils.isThemeEnabled("com.android.internal.systemui.navbar.threebutton")) {
+            prefScreen.removePreference(mLayoutSettings);
+        }
 
     }
 
