@@ -79,8 +79,8 @@ public class NavigationOptions extends SettingsPreferenceFragment
             mNavbarLayout.setSummary(R.string.navbar_gesture_enabled);
         }
 
-        mHandler = new Handler();
-    }
+
+}
 
     public boolean onPreferenceChange(Preference preference, Object objValue) {
         return false;
