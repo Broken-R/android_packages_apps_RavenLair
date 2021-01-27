@@ -19,7 +19,7 @@ import androidx.preference.PreferenceScreen;
 import androidx.preference.Preference.OnPreferenceChangeListener;
 import com.android.internal.util.corvus.Utils;
 import com.android.settings.SettingsPreferenceFragment;
-import com.android.settings.corvus.margaritov.preference.colorpicker.ColorPickerPreference
+import com.android.settings.corvus.margaritov.preference.colorpicker.ColorPickerPreference;
 import com.corvus.support.preferences.CustomSeekBarPreference;
 import com.corvus.support.preferences.SystemSettingSeekBarPreference;
 
