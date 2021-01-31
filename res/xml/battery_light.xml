@@ -20,17 +20,20 @@
 
     <com.corvus.support.preferences.SystemSettingSwitchPreference
         android:key="battery_light_enabled"
+        android:icon="@drawable/battery_charging_80"
         android:title="@string/battery_light_enable"
         android:defaultValue="true"/>
 
     <com.corvus.support.preferences.SystemSettingSwitchPreference
         android:key="battery_light_allow_on_dnd"
+        android:icon="@drawable/battery_off_outline"
         android:title="@string/battery_light_allow_on_dnd_title"
         android:dependency="battery_light_enabled"
         android:defaultValue="false" />
 
     <com.corvus.support.preferences.SystemSettingSwitchPreference
         android:key="battery_light_low_blinking"
+        android:icon="@drawable/battery_alert_variant_outline"
         android:title="@string/battery_light_low_blinking_title"
         android:dependency="battery_light_enabled"
         android:defaultValue="false" />
@@ -41,28 +44,31 @@
 
         <com.android.settings.corvus.margaritov.preference.colorpicker.ColorPickerPreference
             android:key="battery_light_low_color"
+            android:icon="@drawable/battery_10"
             android:title="@string/battery_light_low_color"
             ledPreview="true"
             settings:defaultColorValue="0xFFFF0000" />
 
         <com.android.settings.corvus.margaritov.preference.colorpicker.ColorPickerPreference
             android:key="battery_light_medium_color"
+            android:icon="@drawable/battery_50"
             android:title="@string/battery_light_medium_color"
             ledPreview="true"
             settings:defaultColorValue="0xFFFFFF00" />
 
         <com.android.settings.corvus.margaritov.preference.colorpicker.ColorPickerPreference
             android:key="battery_light_full_color"
+            android:icon="@drawable/battery_80"
             android:title="@string/battery_light_full_color"
             ledPreview="true"
             settings:defaultColorValue="0xFF00FF00" />
 
         <com.android.settings.corvus.margaritov.preference.colorpicker.ColorPickerPreference
             android:key="battery_light_reallyfull_color"
+            android:icon="@drawable/battery_full"
             android:title="@string/battery_light_reallyfull_color"
             ledPreview="true"
             settings:defaultColorValue="0xFF00FF00" />
-
     </PreferenceCategory>
 
 </PreferenceScreen>
