@@ -16,7 +16,7 @@
 
 <resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
 
-    <!-- Dirty Tweaks -->
+    <!-- Raven Lair -->
     <string name="ravenlair_title">Raven\'s Lair</string>
     <string name="ravenlair_summary">Unleash the Raven</string>
 
@@ -598,5 +598,9 @@
     <string name="gaming_mode_notifications_all_title">Show toasts and notification</string>
     <string name="gaming_mode_dynamic_title">Dynamic mode</string>
     <string name="gaming_mode_dynamic_summary">Try detecting and adding gaming apps automatically</string>
+
+    <!-- Volume Button Music Control -->
+    <string name="volume_rocker_music_controls_title">Music control</string>
+    <string name="volume_rocker_music_controls_summary">Long press volume buttons to switch tracks while screen off</string>
 </resources>
 
