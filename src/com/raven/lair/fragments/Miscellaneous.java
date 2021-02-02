@@ -35,6 +35,8 @@ import com.android.settingslib.search.Indexable;
 import com.android.settings.SettingsPreferenceFragment;
 import com.android.settings.Utils;
 
+import com.corvus.support.preferences.SystemSettingMasterSwitchPreference;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -49,6 +51,9 @@ public class Miscellaneous extends SettingsPreferenceFragment
     private static final String PREF_TILE_ANIM_DURATION = "qs_tile_animation_duration";
     private static final String PREF_TILE_ANIM_INTERPOLATOR = "qs_tile_animation_interpolator";
 
+    private static final String GAMING_MODE_ENABLED = "gaming_mode_enabled";
+
+    private SystemSettingMasterSwitchPreference mGamingMode;
 
     private ListPreference mTileAnimationStyle;
     private ListPreference mTileAnimationDuration;
@@ -65,6 +70,11 @@ public class Miscellaneous extends SettingsPreferenceFragment
     public void onCreate(Bundle icicle) {
         super.onCreate(icicle);
         addPreferencesFromResource(R.xml.miscellaneous);
+
+        mGamingMode = (SystemSettingMasterSwitchPreference) findPreference(GAMING_MODE_ENABLED);
+        mGamingMode.setChecked((Settings.System.getInt(getActivity().getContentResolver(),
+                Settings.System.GAMING_MODE_ENABLED, 0) == 1));
+        mGamingMode.setOnPreferenceChangeListener(this);
 
         final ContentResolver resolver = getActivity().getContentResolver();
 
@@ -117,19 +127,24 @@ public class Miscellaneous extends SettingsPreferenceFragment
             updateTileAnimationStyleSummary(tileAnimationStyle);
             updateAnimTileStyle(tileAnimationStyle);
             return true;
-        } else if (preference == mTileAnimationDuration) {
+        }   else if (preference == mTileAnimationDuration) {
             int tileAnimationDuration = Integer.valueOf((String) objValue);
             Settings.System.putIntForUser(resolver, Settings.System.ANIM_TILE_DURATION,
                     tileAnimationDuration, UserHandle.USER_CURRENT);
             updateTileAnimationDurationSummary(tileAnimationDuration);
             return true;
-     }   else if (preference == mTileAnimationInterpolator) {
+        }   else if (preference == mTileAnimationInterpolator) {
             int tileAnimationInterpolator = Integer.valueOf((String) objValue);
             Settings.System.putIntForUser(resolver, Settings.System.ANIM_TILE_INTERPOLATOR,
                     tileAnimationInterpolator, UserHandle.USER_CURRENT);
             updateTileAnimationInterpolatorSummary(tileAnimationInterpolator);
             return true;
-       } 
+	}   else if (preference == mGamingMode) {
+            boolean value = (Boolean) newValue;
+            Settings.System.putInt(getActivity().getContentResolver(),
+                    Settings.System.GAMING_MODE_ENABLED, value ? 1 : 0);
+            return true;
+        } 
         return false;
     }
 

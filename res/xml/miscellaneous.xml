@@ -111,7 +111,13 @@
             android:entries="@array/qs_tile_animation_interpolator_entries"
             android:entryValues="@array/qs_tile_animation_interpolator_values"
             android:persistent="false" />
-
     </PreferenceCategory>
+
+    <com.corvus.support.preferences.SystemSettingMasterSwitchPreference
+        android:key="gaming_mode_enabled"
+        android:fragment="com.raven.lair.fragments.GamingMode"
+        android:title="@string/gaming_mode_title"
+        android:summary="@string/gaming_mode_summary"
+        android:defaultValue="false" />
 
 </PreferenceScreen>
